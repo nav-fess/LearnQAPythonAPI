@@ -1,10 +1,10 @@
 import requests
-def print_text_api(link):
-    response = requests.get(link)
+def print_text_api(link, params = ""):
+    response = requests.get(link, params)
     print(response.text)
 
-
+payload = { "name": "Vladimir"}
 link_hello = "https://playground.learnqa.ru/api/hello"
-print_text_api(link_hello)
+print_text_api(link_hello, payload)
 link_get_text = "https://playground.learnqa.ru/api/get_text"
 print_text_api(link_get_text)
