@@ -41,7 +41,7 @@ def test_value_header():
     response = requests.get("https://playground.learnqa.ru/api/homework_header")
     assert "x-secret-homework-header" in response.headers, f"Cannot find cookie with name HomeWork in the last response"
     header = response.headers.get('x-secret-homework-header')
-    assert header == "Some secret value", f"{header} not math with 'Some secret value '"  
+    assert header == "Some secret value", f"{header} not math with 'Some secret value'"
 
 
 @pytest.mark.parametrize("header", headers)
