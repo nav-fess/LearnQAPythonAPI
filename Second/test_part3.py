@@ -23,7 +23,8 @@ headers = [
          "(KHTML, like Gecko) Version/13.0.3 Mobile/15E148 Safari/604.1'"
          "Expected values:'platform': 'Mobile', 'browser': 'No', 'device': 'iPhone'"},
 ]
-'''
+
+
 def test_assert_text():
     text = str(input("Set a phrase: "))
     assert len(text) < 15, "phrase exceeds 15 characters"
@@ -41,20 +42,19 @@ def test_value_header():
     assert "x-secret-homework-header" in response.headers, f"Cannot find cookie with name HomeWork in the last response"
     header = response.headers.get('x-secret-homework-header')
     assert header == "Some secret value", f"{header} not math with 'Some secret value '"  
-    '''
 
 
 @pytest.mark.parametrize("header", headers)
 def test_user_agent(header):
-    rezult = []
+    void_fields = []
 
     response = requests.get(
         "https://playground.learnqa.ru/ajax/api/user_agent_check",
         headers=header).json()
 
-    if response['device'] == 'Unknown': rezult.append('device')
-    if response['platform'] == 'Unknown': rezult.append('platform')
-    if response['browser'] == 'Unknown': rezult.append('browser')
+    if response['device'] == 'Unknown': void_fields.append('device')
+    if response['platform'] == 'Unknown': void_fields.append('platform')
+    if response['browser'] == 'Unknown': void_fields.append('browser')
 
     if len(rezult) != 0:
-        print(f"header = {header} \n Void fields = {rezult} \n\n")
+        print(f"header = {header} \n Void fields = {void_fields} \n\n")
