@@ -1,8 +1,11 @@
+import allure
 from lib.my_requests import MyRequests
 from lib.base_case import BaseCase
 from lib.assertion import Assertion
 
+@allure.epic("Check paramaters users cases")
 class TestUserGet(BaseCase):
+    @allure.description("This test check exist parameters user")
     def test_get_user_details_not_auth(self):
         response = MyRequests.get("api/user/2")
 
@@ -11,7 +14,7 @@ class TestUserGet(BaseCase):
         Assertion.assert_json_has_not_key(response, "firstName")
         Assertion.assert_json_has_not_key(response, "lastName")
 
-
+    @allure.description("This test check not exist parameters user")
     def test_get_user_details_auth_as_same_user(self):
         data = {
             "email": "vinkotov@example.com",
