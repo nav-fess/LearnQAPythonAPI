@@ -1,5 +1,6 @@
 import allure
 import requests
+from environment import ENV_OGJECT
 from .logger import Logger
 
 
@@ -31,7 +32,7 @@ class MyRequests():
     @staticmethod
     def _send(url: str, data: dict, headers: dict, cookies: dict, method: str):
 
-        url = f"https://playground.learnqa.ru/{url}"
+        url = f"{ENV_OGJECT.get_base_url()}{url}"
         if headers is None: headers = {}
         if cookies is None: cookies = {}
 

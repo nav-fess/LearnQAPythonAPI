@@ -13,7 +13,7 @@ class Logger:
 
     @classmethod
     def add_request(cls, url: str, data:dict, headers: dict, cookies: dict, method: str):
-        testname = os.environ.get('PYTEST_CURRNET_TEST')
+        testname = os.environ.get('PYTEST_CURRENT_TEST')
 
         data_to_add = f"\n--------\n"
         data_to_add += f"Test:{testname}\n"
