@@ -1,3 +1,4 @@
+import allure
 import requests
 from .logger import Logger
 
@@ -5,22 +6,26 @@ from .logger import Logger
 class MyRequests():
     @staticmethod
     def get(url: str, data: dict = None, headers: dict = None, cookies: dict = None):
-        return MyRequests._send(url, data, headers, cookies, "GET")
+        with allure.step(f"GET request for URL: {url}"):
+            return MyRequests._send(url, data, headers, cookies, "GET")
 
 
     @staticmethod
     def post(url: str, data: dict = None, headers: dict = None, cookies: dict = None):
-        return MyRequests._send(url, data, headers, cookies, "POST")
+        with allure.step(f"POST request for URL: {url}"):
+            return MyRequests._send(url, data, headers, cookies, "POST")
 
 
     @staticmethod
     def put(url: str, data: dict = None, headers: dict = None, cookies: dict = None):
-        return MyRequests._send(url, data, headers, cookies, "PUT")
+        with allure.step(f"PUT request for URL: {url}"):
+            return MyRequests._send(url, data, headers, cookies, "PUT")
 
 
     @staticmethod
     def delete(url: str, data: dict = None, headers: dict = None, cookies: dict = None):
-        return MyRequests._send(url, data, headers, cookies, "DELETE")
+        with allure.step(f"DELETE request for URL: {url}"):
+            return MyRequests._send(url, data, headers, cookies, "DELETE")
 
 
     @staticmethod
